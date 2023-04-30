@@ -21,4 +21,4 @@ Use this as a starting point to complete the WDD 330 team activity: the SleepOut
 
 ## Link
 
-- https://scintillating-lokum-faecb3.netlify.app/
+- https://scintillating-lokum-faecb3.netlify.app/ 
