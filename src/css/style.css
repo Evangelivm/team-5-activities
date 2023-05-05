@@ -110,6 +110,20 @@ button {
   fill: gray;
 }
 
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+
+.cart-animation {
+  animation: pulse 0.2s ease-in-out;
+}
+
+
 /* End cart icon styles */
 
 .mission {
