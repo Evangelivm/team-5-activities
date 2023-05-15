@@ -21,13 +21,11 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
-
-export function getParam(param) {
+export function getParam(param){
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   return urlParams.get(param);
 }
-
 export function renderListWithTemplate(
   templateFn,
   parentElement,
@@ -36,7 +34,7 @@ export function renderListWithTemplate(
   clear = true
 ) {
   if (clear) {
-    parentElement.innerHTML = "";
+    parentElement.innerHTML ="";
   }
   const htmlString = list.map(templateFn);
   parentElement.insertAdjacentHTML(position, htmlString.join(""));
