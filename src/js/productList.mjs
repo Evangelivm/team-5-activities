@@ -1,8 +1,8 @@
-import {getData} from "./productData.mjs";
-import {renderListWithTemplate} from "./utils.mjs";
+import { getData } from "./productData.mjs";
+import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
-    return `<li class="product-card">
+  return `<li class="product-card">
     <a href="product_pages/index.html?product=${product.Id}">
     <img
       src="${product.Image}"
@@ -11,22 +11,15 @@ function productCardTemplate(product) {
     <h3 class="card__brand">${product.Brand.Name}</h3>
     <h2 class="card__name">${product.NameWithoutBrand}</h2>
     <p class="product-card__price">$${product.FinalPrice}</p></a>
-  </li>`
-} 
-
-export default async function productList(selector, category) {
-    // get the element we will insert the list into from the selector
-    const elem = document.querySelector(selector);
-    // get the list of products
-    const products = (await getData(category));
-    const indexOne = [0,1,3,5]
-    const selPr = products.filter((_,index) => indexOne.includes(index));
-    console.log(products);
-    // render out the product list to the element
-    renderListWithTemplate(productCardTemplate, elem, selPr);
+  </li>`;
 }
 
-function renderList(list, el) {
-    const htmlStrings =  list.map(productCardTemplate);
-    el.insertAdjacentHTML('afterbegin', htmlStrings.join(''));
+export default async function productList(selector, category) {
+  // get the element we will insert the list into from the selector
+  const el = document.querySelector(selector);
+  // get the list of products
+  const products = await getData(category);
+  console.log(products);
+  // render out the product list to the element
+  renderListWithTemplate(productCardTemplate, el, products);
 }
