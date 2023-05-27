@@ -26,7 +26,7 @@ export default async function productList(selector, category) {
     //i change to products for receive all the list
     renderListWithTemplate(productCardTemplate, elem, products);
     //change the name
-    document.querySelector(".title").innerHTML = ": "+category;
+    document.querySelector(".title").innerHTML = category;
 }
 
 function renderList(list, el) {
