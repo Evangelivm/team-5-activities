@@ -17,7 +17,7 @@ export default async function productDetails(productId){
     .addEventListener("click", addToCart);
 }
 
-//addToCart
+addToCart
 function addToCart() {
   let cartContents = getLocalStorage("so-cart");
   //check to see if there was anything there
@@ -25,7 +25,28 @@ function addToCart() {
   // then add the current product to the list
   cartContents.push(product);
   setLocalStorage("so-cart", cartContents);
+  
+  // Get the cart icon element and add the cart-animation class to trigger the animation
+  const cartIcon = document.querySelector(".cart-icon");
+  cartIcon.classList.add("cart-animation");
+
+  // After a short delay, remove the cart-animation class to stop the animation
+  setTimeout(() => {
+    cartIcon.classList.remove("cart-animation");
+  }, 500);
 }
+
+// function addToCart() {
+//   let cartContents = JSON.parse(localStorage.getItem("so-cart"));
+//   if (Array.isArray(cartContents)) {
+//     cartContents.push(product);
+//   } else {
+//     cartContents = [product];
+//   }
+//   setLocalStorage("so-cart", cartContents);
+
+  
+// }
 
 //renderProductDetails
 function renderProductDetails(){
