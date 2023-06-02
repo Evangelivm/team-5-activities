@@ -13,6 +13,7 @@ export default class Alert {
         }
       })
       .catch((error) => {
+        // eslint-disable-next-line no-console
         console.error("Failed to load alerts:", error);
       });
   }
