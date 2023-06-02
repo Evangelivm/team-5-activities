@@ -14,6 +14,7 @@ function formDataToJSON(formElement) {
 
 function packageItems(items) {
   const simplifiedItems = items.map((item) => {
+    // eslint-disable-next-line no-console
     console.log(item);
     return {
       id: item.Id,
@@ -80,11 +81,14 @@ const checkoutProcess = {
     json.tax = this.tax;
     json.shipping = this.shipping;
     json.items = packageItems(this.list);
+    // eslint-disable-next-line no-console
     console.log(json);
     try {
       const res = await checkout(json);
+      // eslint-disable-next-line no-console
       console.log(res);
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.log(err);
     }
   },
