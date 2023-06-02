@@ -1,5 +1,4 @@
 let baseURL = import.meta.env.VITE_SERVER_URL
-if (baseURL === undefined) baseURL = "http://server-nodejs.cit.byui.edu:3000/";
 function convertToJson(res) {
   if (res.ok) {
     return res.json();
