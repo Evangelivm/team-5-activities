@@ -1,7 +1,8 @@
 import { setLocalStorage } from "./utils.mjs";
+import { getLocalStorage } from "./utils.mjs";
 import { findProductById } from "./productData.mjs";
 
-let product = null;
+let product = {};
 
 //productDetails
 export default async function productDetails(productId){
@@ -17,8 +18,13 @@ export default async function productDetails(productId){
 }
 
 //addToCart
-function addToCart(){
-    setLocalStorage("so-cart", product);
+function addToCart() {
+  let cartContents = getLocalStorage("so-cart");
+  //check to see if there was anything there
+  cartContents = [];
+  // then add the current product to the list
+  cartContents.push(product);
+  setLocalStorage("so-cart", cartContents);
 }
 
 //renderProductDetails
@@ -26,9 +32,9 @@ function renderProductDetails(){
     document.querySelector("#productName").innerText = product.Brand.Name;
     document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
     // name and image
-    document.querySelector("#productImage").src = product.Image;
+    document.querySelector("#productImage").src = product.Images.PrimaryLarge;
     document.querySelector("#productImage").alt = product.Name;
-    document.querySelector("#productFinalPrice").innerText = product.FinalPrice;
+    document.querySelector("#productFinalPrice").innerText = "$"+product.FinalPrice;
     document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
     document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
     document.querySelector("#addToCart").dataset.id = product.Id
