@@ -1,5 +1,6 @@
-let baseURL = import.meta.env.VITE_SERVER_URL
+let baseURL = import.meta.env.VITE_SERVER_URL;
 baseURL = 'http://server-nodejs.cit.byui.edu:3000/';
+
 async function convertToJson(res) {
   const data = await res.json();
   if (res.ok) {
@@ -30,4 +31,10 @@ export async function checkout(payload) {
     body: JSON.stringify(payload),
   };
   return await fetch(baseURL + "checkout/", options).then(convertToJson);
+}
+
+export async function searchProducts(searchTerm) {
+  const response = await fetch(baseURL + `products/search/${searchTerm}`);
+  const data = await convertToJson(response);
+  return data.Result;
 }

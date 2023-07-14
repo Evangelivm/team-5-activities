@@ -10,6 +10,7 @@ export default function shoppingCart() {
 }
 
 function displayCartTotal(total) {
+  document.getElementById("count").innerHTML=cartItems.length;
   if (total > 0) {
     // show our checkout button and total if there are items in the cart.
     document.querySelector(".list-footer").classList.remove("hide");
